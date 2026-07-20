@@ -1,10 +1,8 @@
 {
-  "name": "@repo/db",
+  "name": "websocket",
   "module": "index.ts",
   "type": "module",
-  "exports": {
-    ".": "./index.ts"
-  },
+  "private": true,
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -12,8 +10,6 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@prisma/client": "6.3.1",
-    "i": "^0.3.7",
-    "prisma": "6.3.1"
+    "@repo/db": "*"
   }
 }

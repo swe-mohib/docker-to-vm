@@ -1,15 +1,31 @@
 # @repo/db
 
-To install dependencies:
+Install dependencies(at root)
 
 ```bash
 bun install
 ```
 
-To run:
+Prisma migrate
 
 ```bash
-bun run index.ts
+bunx prisma migrate dev --name init
 ```
 
-This project was created using `bun init` in bun v1.2.18. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Prisma migrate
+
+```bash
+bunx prisma generate
+```
+
+Update the .env file with the right credentials
+
+```sh
+DATABASE_URL="postgresql://postgres:password@localhost:5432/postgres
+```
+
+Create a DB locally
+
+```sh
+docker run -e POSTGRES_PASSWORD=password -d -p 5432:5432 --network cn postgres
+```
