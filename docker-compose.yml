@@ -39,7 +39,7 @@ services:
       postgres:
         condition: service_healthy
 
-  ws:
+  websocket:
     build:
       context: .
       dockerfile: docker/Dockerfile.websocket

@@ -1,96 +1,10 @@
-# ---- Dependencies ----
 node_modules
 **/node_modules
-.pnp
-.pnp.js
-
-# ---- Turborepo ----
-.turbo
-**/.turbo
-
-# ---- Build outputs ----
-dist
-**/dist
-build
-**/build
-.next
 **/.next
-out
-**/out
-.output
-**/.output
-.vercel
-**/.vercel
-.svelte-kit
-**/.svelte-kit
-.expo
-**/.expo
-storybook-static
-**/storybook-static
-
-# ---- Bun ----
-.bun
-**/.bun
-bun.lockb.bak
-.bun-cache
-**/.bun-cache
-
-# ---- Package manager caches / lockfile artifacts ----
-.npm
-.yarn
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
-.pnpm-store
-**/.pnpm-store
-
-# ---- Env & secrets ----
+**/dist
+**/.turbo
+.git
+.github
 .env
 .env.*
 !.env.example
-**/.env
-**/.env.*
-!**/.env.example
-
-# ---- Logs ----
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-logs
-*.log
-
-# ---- Testing / coverage ----
-coverage
-**/coverage
-.nyc_output
-
-# ---- Git & CI ----
-.git
-.gitignore
-.github
-
-# ---- Docker ----
-Dockerfile*
-docker-compose*
-.dockerignore
-
-# ---- Editor / OS ----
-.vscode
-.idea
-.DS_Store
-Thumbs.db
-
-# ---- Docs / misc ----
-README.md
-CHANGELOG.md
-LICENSE
-*.md
-!**/README.md
-
-# ---- Temp ----
-tmp
-temp
-.cache
-**/.cache
