@@ -36,7 +36,7 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > "$SSH_KEY_PATH"
           chmod 600 "$SSH_KEY_PATH"
 
-          ssh -o StrictHostKeyChecking=no -i "$SSH_KEY_PATH" root@"$DEPLOY_HOST" "
+          ssh -o StrictHostKeyChecking=no -i "$SSH_KEY_PATH" ubuntu@"$DEPLOY_HOST" "
             set -e
             docker pull ${IMAGE}
             docker stop web || true
