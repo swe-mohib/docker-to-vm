@@ -41,7 +41,7 @@ jobs:
             docker pull ${IMAGE}
             docker stop websocket || true
             docker rm websocket || true
-            docker run --name websocket -e DATABASE_URL='$DATABASE_URL' -d --restart unless-stopped -p 8080:8080 ${IMAGE}
+            docker run --name websocket -e DATABASE_URL='$DATABASE_URL' -d --restart unless-stopped -p 8081:8081 ${IMAGE}
             docker image prune -f
           "
 
