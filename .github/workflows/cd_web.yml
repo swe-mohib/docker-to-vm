@@ -22,3 +22,27 @@ jobs:
           file: ./docker/Dockerfile.web
           push: true
           tags: immohib/docker-to-vm-web:${{github.sha}}
+
+      - name: Deploy to the VM
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DEPLOY_HOST: 15.206.159.227
+          IMAGE: immohib/docker-to-vm-web:${{ github.sha }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          set -euo pipefail
+
+          SSH_KEY_PATH="$(mktemp)"
+          echo "$SSH_PRIVATE_KEY" > "$SSH_KEY_PATH"
+          chmod 600 "$SSH_KEY_PATH"
+
+          ssh -o StrictHostKeyChecking=no -i "$SSH_KEY_PATH" root@"$DEPLOY_HOST" "
+            set -e
+            docker pull ${IMAGE}
+            docker stop web || true
+            docker rm web || true
+            docker run --name web -e DATABASE_URL='$DATABASE_URL' -d --restart unless-stopped -p 3000:3000 ${IMAGE}
+            docker image prune -f
+          "
+
+          rm -f "$SSH_KEY_PATH"
