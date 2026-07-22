@@ -27,7 +27,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           DEPLOY_HOST: 15.206.159.227
-          IMAGE: immohib/docker-to-vm-backend:${{ github.sha }}
+          IMAGE: immohib/docker-to-vm-websocket:${{ github.sha }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
           set -euo pipefail
@@ -39,9 +39,9 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i "$SSH_KEY_PATH" ubuntu@"$DEPLOY_HOST" "
             set -e
             docker pull ${IMAGE}
-            docker stop backend || true
-            docker rm backend || true
-            docker run --name backend -e DATABASE_URL='$DATABASE_URL' -d --restart unless-stopped -p 8080:8080 ${IMAGE}
+            docker stop websocket || true
+            docker rm websocket || true
+            docker run --name websocket -e DATABASE_URL='$DATABASE_URL' -d --restart unless-stopped -p 8080:8080 ${IMAGE}
             docker image prune -f
           "
 
